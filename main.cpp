@@ -21,7 +21,6 @@ struct Studentas {
     int egzaminas;
     double galutinis;
 };
-
 // vidurkio skaiciavimo funkcija
 double average(const vector<int>& v) {
     if (v.empty()) return 0.0;
