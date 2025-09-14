@@ -24,3 +24,10 @@ struct Studentas {
 int main() {
     cout <<"Studentų informacinė sistema" << endl;
 }
+//vidukio skaiciavimo funkcija
+double average(const vector<int>& v) {
+    if (v.empty()) retutn 0.0;
+    double sum = 0;
+    for (int x : v) sum += x;
+    return sum / v.size();
+}
