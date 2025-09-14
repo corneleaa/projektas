@@ -13,3 +13,14 @@ using std::left;
 using std::right;
 using std::fixed;
 using std::setprecision;
+
+struct Studentas {
+    string vardas;
+    string pavarde;
+    vector<int> pazymiai;
+    int egzaminas;
+    double galutinis;
+};
+int main() {
+    cout <<"Studentų informacinė sistema" << endl;
+}
