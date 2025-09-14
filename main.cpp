@@ -31,3 +31,37 @@ double average(const vector<int>& v) {
     for (int x : v) sum += x;
     return sum / v.size();
 }
+int main() {
+    int n;
+    cout << "Kiek studentu norite ivesti? ";
+    cin >> n;
+
+    vector<Studentas> grupe;
+
+    for (int i = 0; i < n; i++) {
+        Studentas s;
+        cout << "Iveskite varda: ";
+        cin >> s.vardas;
+        cout << "Iveskite pavarde: ";
+        cin >> s.pavarde;
+
+        int nd_kiek;
+        cout << "Kiek namu darbu pazymiu? ";
+        cin >> nd_kiek;
+
+        cout << "Iveskite " << nd_kiek << " pazymius: ";
+        for (int j = 0; j < nd_kiek; j++) {
+            int x;
+            cin >> x;
+            s.pazymiai.push_back(x);
+        }
+
+        cout << "Egzamino rezultatas: ";
+        cin >> s.egzaminas;
+
+        s.galutinis = average(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
+
+        grupe.push_back(s);
+    }
+}
+
