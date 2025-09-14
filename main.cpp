@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <vector
+#include <vector>
 
 using std::cout;
 using std::cin;
@@ -21,17 +21,18 @@ struct Studentas {
     int egzaminas;
     double galutinis;
 };
-int main() {
-    cout <<"Studentų informacinė sistema" << endl;
-}
-//vidukio skaiciavimo funkcija
+
+// vidurkio skaiciavimo funkcija
 double average(const vector<int>& v) {
-    if (v.empty()) retutn 0.0;
+    if (v.empty()) return 0.0;
     double sum = 0;
     for (int x : v) sum += x;
     return sum / v.size();
 }
+
 int main() {
+    cout << "Studentų informacinė sistema" << endl;
+
     int n;
     cout << "Kiek studentu norite ivesti? ";
     cin >> n;
@@ -63,5 +64,20 @@ int main() {
 
         grupe.push_back(s);
     }
+
+    cout << "\nRezultatai:\n";
+    cout << setw(15) << left << "Vardas"
+         << setw(15) << left << "Pavarde"
+         << setw(20) << right << "Galutinis (Vid.)" << endl;
+    cout << "----------------------------------------------------------" << endl;
+
+    for (int i = 0; i < grupe.size(); i++) {
+        cout << setw(15) << left << grupe[i].vardas
+             << setw(15) << left << grupe[i].pavarde
+             << setw(20) << right << fixed << setprecision(2) << grupe[i].galutinis
+             << endl;
+    }
+
+    return 0;
 }
 
