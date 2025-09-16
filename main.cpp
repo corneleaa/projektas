@@ -64,18 +64,42 @@ int main() {
 
         grupe.push_back(s);
     }
+    int pasirinkimas;
+    cout << "Pasirinkite isvedimo buda:\n";
+    cout << "1 - Tik pagal vidurki\n";
+    cout << "2 - Tik pagal mediana\n";
+    cout << "3 - Abu kartu\n";
+    cout << "Jusu pasirinkimas: ";
+    cin >> pasirinkimas;
 
     cout << "\nRezultatai:\n";
     cout << setw(15) << left << "Vardas"
-         << setw(15) << left << "Pavarde"
-         << setw(20) << right << "Galutinis (Vid.)" << endl;
-    cout << "----------------------------------------------------------" << endl;
+         << setw(15) << left << "Pavarde";
 
-    for (int i = 0; i < grupe.size(); i++) {
-        cout << setw(15) << left << grupe[i].vardas
-             << setw(15) << left << grupe[i].pavarde
-             << setw(20) << right << fixed << setprecision(2) << grupe[i].galutinis
-             << endl;
+    if (pasirinkimas == 1)
+        cout << setw(20) << right << "Galutinis (Vid.)";
+    else if (pasirinkimas == 2)
+        cout << setw(20) << right << "Galutinis (Med.)";
+    else
+        cout << setw(20) << right << "Galutinis (Vid.)"
+             << setw(20) << right << "Galutinis (Med.)";
+
+    cout << endl;
+    cout << "-----------------------------------------------------------------------" << endl;
+
+    for (auto &st : grupe) {
+        cout << setw(15) << left << st.vardas
+             << setw(15) << left << st.pavarde;
+
+        if (pasirinkimas == 1)
+            cout << setw(20) << right << fixed << setprecision(2) << st.galutinisVid;
+        else if (pasirinkimas == 2)
+            cout << setw(20) << right << fixed << setprecision(2) << st.galutinisMed;
+        else
+            cout << setw(20) << right << fixed << setprecision(2) << st.galutinisVid
+                 << setw(20) << right << fixed << setprecision(2) << st.galutinisMed;
+
+        cout << endl;
     }
 
     return 0;
