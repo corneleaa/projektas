@@ -58,8 +58,26 @@ int pasirinkimoMeniu() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     return p;
 }
+Studentas generuotiStudenta() {
+    Studentas s;
+    static const string vardai[] = {"Jonas","Ieva","Petras","Asta","Milda"};
+    static const string pavardes[] = {"Ivanauskas","Bartasevicius","Jonaitis","Dambrauskaite","Sabaliauskas"};
+    s.vardas  = vardai[std::rand() % 5];
+    s.pavarde = pavardes[std::rand() % 5];
 
-    cout << "Studentu informacine sistema" << endl;
+    int ndKiek = 3 + std::rand() % 5;
+    for (int i = 0; i < ndKiek; i++)
+        s.pazymiai.push_back(1 + std::rand() % 10);
+
+    s.egzaminas   = 1 + std::rand() % 10;
+    s.galutinisVid = average(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
+    s.galutinisMed = median(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
+    return s;
+}
+
+int main() {
+    std::srand(std::time(nullptr));
+    cout << "Studentu informacine sistema\n"; // ties cia stop
 
     int n;
     cout << "Kiek studentu norite ivesti? ";
