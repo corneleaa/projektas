@@ -78,38 +78,39 @@ Studentas generuotiStudenta() {
 int main() {
     std::srand(std::time(nullptr));
     cout << "Studentu informacine sistema\n"; // ties cia stop
-
+    
+    int veiksmas = pasirinkimoMeniu();
     int n;
     cout << "Kiek studentu norite ivesti? ";
     cin >> n;
-
+    
     vector<Studentas> grupe;
-
-    for (int i = 0; i < n; i++) {
-        Studentas s;
-        cout << "Iveskite varda: ";
-        cin >> s.vardas;
-        cout << "Iveskite pavarde: ";
-        cin >> s.pavarde;
-
-        int nd_kiek;
-        cout << "Kiek namu darbu pazymiu? ";
-        cin >> nd_kiek;
-
-        cout << "Iveskite " << nd_kiek << " pazymius: ";
-        for (int j = 0; j < nd_kiek; j++) {
-            int x;
-            cin >> x;
-            s.pazymiai.push_back(x);
+    
+    if (veiksmas == 1) {
+        for (int i = 0; i < n; i++) {
+            Studentas s;
+            cout << "Iveskite varda: ";
+            cin >> s.vardas;
+            cout << "Iveskite pavarde: ";
+            cin >> s.pavarde;
+            cout << "Iveskite namu darbu pazymius (Enter uzbaigs irasyma):\n";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            while (true) {
+                string eilute;
+                getline(cin, eilute);
+                if (eilute.empty()) break;
+                s.pazymiai.push_back(std::stoi(eilute));
+            }
+            cout << "Egzamino rezultatas: ";
+            cin >> s.egzaminas;
+            
+            s.galutinisVid = average(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
+            s.galutinisMed = median(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
+            grupe.push_back(s);
         }
-
-        cout << "Egzamino rezultatas: ";
-        cin >> s.egzaminas;
-        
-        s.galutinisVid = average(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
-        s.galutinisMed = median(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
-
-        grupe.push_back(s);
+    } else {
+        for (int i = 0; i < n; i++)
+            grupe.push_back(generuotiStudenta());
     }
     int pasirinkimas;
     cout << "Pasirinkite isvedimo buda:\n";
