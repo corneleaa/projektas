@@ -20,7 +20,8 @@ struct Studentas {
     string pavarde;
     vector<int> pazymiai;
     int egzaminas;
-    double galutinis;
+    double galutinisVid;
+    double galutinisMed;
 };
 // vidurkio skaiciavimo funkcija
 double average(const vector<int>& v) {
@@ -30,6 +31,16 @@ double average(const vector<int>& v) {
     return sum / v.size();
 }
 
+// medianos skaiciavimas
+double median(vector<int> v) {
+    if (v.empty()) return 0.0;
+    std::sort(v.begin(), v.end());
+    size_t n = v.size();
+    if (n % 2 == 0)
+        return (v[n/2 - 1] + v[n/2]) / 2.0;
+    else
+        return v[n/2];
+}
 int main() {
     cout << "Studentu informacine sistema" << endl;
 
@@ -59,8 +70,9 @@ int main() {
 
         cout << "Egzamino rezultatas: ";
         cin >> s.egzaminas;
-
-        s.galutinis = average(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
+        
+        s.galutinisVid = average(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
+        s.galutinisMed = median(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
 
         grupe.push_back(s);
     }
