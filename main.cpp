@@ -1,8 +1,12 @@
-
 #include <iostream>
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <limits>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
 
 using std::cout;
 using std::cin;
@@ -14,6 +18,9 @@ using std::left;
 using std::right;
 using std::fixed;
 using std::setprecision;
+using std::getline;
+using std::numeric_limits;
+using std::streamsize;
 
 struct Studentas {
     string vardas;
@@ -41,7 +48,17 @@ double median(vector<int> v) {
     else
         return v[n/2];
 }
-int main() {
+int pasirinkimoMeniu() {
+    int p;
+    cout << "Pasirinkite veiksmą:\n";
+    cout << "1 - Įvesti duomenis ranka\n";
+    cout << "2 - Sugeneruoti atsitiktinai\n";
+    cout << "Jūsų pasirinkimas: ";
+    cin >> p;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    return p;
+}
+
     cout << "Studentu informacine sistema" << endl;
 
     int n;
