@@ -51,9 +51,9 @@ double median(vector<int> v) {
 int pasirinkimoMeniu() {
     int p;
     cout << "Pasirinkite veiksmą:\n";
-    cout << "1 - Įvesti duomenis ranka\n";
+    cout << "1 - Ivesti duomenis ranka\n";
     cout << "2 - Sugeneruoti atsitiktinai\n";
-    cout << "Jūsų pasirinkimas: ";
+    cout << "Jusu pasirinkimas: ";
     cin >> p;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     return p;
