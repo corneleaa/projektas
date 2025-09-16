@@ -50,7 +50,7 @@ double median(vector<int> v) {
 }
 int pasirinkimoMeniu() {
     int p;
-    cout << "Pasirinkite veiksmą:\n";
+    cout << "Pasirinkite veiksma:\n";
     cout << "1 - Ivesti duomenis ranka\n";
     cout << "2 - Sugeneruoti atsitiktinai\n";
     cout << "Jusu pasirinkimas: ";
