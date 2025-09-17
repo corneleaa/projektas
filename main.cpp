@@ -57,6 +57,7 @@ int pasirinkimoMeniu() {
     cout << "Pasirinkite veiksma:\n";
     cout << "1 - Ivesti duomenis ranka\n";
     cout << "2 - Sugeneruoti atsitiktinai\n";
+    cout << "3- Nuskaityti is failo\n"
     cout << "Jusu pasirinkimas: ";
     cin >> p;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -75,7 +76,38 @@ Studentas generuotiStudenta() {
     s.galutinisMed = median(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
     return s;
 }
+vector<Studentas> nuskaitytiIsFailo(const string& failoVardas) {
+    vector<Studentas> grupe;
+    ifstream in(failoVardas);
+    if (!in) {
+        std::cerr << "Nepavyko atidaryti failo!\n";
+        return grupe;
+    }
 
+    string eilute;
+    getline(in, eilute);
+
+    while (getline(in, eilute)) {
+        if (eilute.empty()) continue;
+        istringstream iss(eilute);
+        Studentas s;
+        iss >> s.vardas >> s.pavarde;
+
+        vector<int> paz;
+        int pazymys;
+        while (iss >> pazymys) paz.push_back(pazymys);
+
+        if (!paz.empty()) {
+            s.egzaminas = paz.back();
+            paz.pop_back();
+            s.pazymiai = paz;
+            s.galutinisVid = average(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
+            s.galutinisMed = median(s.pazymiai) * 0.4 + s.egzaminas * 0.6;
+            grupe.push_back(s);
+        }
+    }
+    return grupe;
+}
 int main() {
     std::srand(std::time(nullptr));
     cout << "Studentu informacine sistema\n"; // ties cia stop
