@@ -152,6 +152,10 @@ int main() {
     cout << "3 - Abu kartu\n";
     cout << "Jusu pasirinkimas: ";
     cin >> pasirinkimas;
+    std::sort(grupe.begin(), grupe.end(),
+              [](const Studentas &a, const Studentas &b) {
+                  return a.vardas < b.vardas;
+              });
 
     cout << "\nRezultatai:\n";
     cout << setw(15) << left << "Vardas"
