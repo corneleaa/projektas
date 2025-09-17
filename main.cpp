@@ -64,13 +64,10 @@ int pasirinkimoMeniu() {
 }
 Studentas generuotiStudenta() {
     Studentas s;
-    static const string vardai[] = {"Jonas","Ieva","Petras","Asta","Milda"};
-    static const string pavardes[] = {"Ivanauskas","Bartasevicius","Jonaitis","Dambrauskaite","Sabaliauskas"};
-    s.vardas  = vardai[std::rand() % 5];
-    s.pavarde = pavardes[std::rand() % 5];
-
-    int ndKiek = 3 + std::rand() % 5;
-    for (int i = 0; i < ndKiek; i++)
+    s.vardas = "Vardas" + std::to_string(std::rand() % 100);
+    s.pavarde = "Pavarde" + std::to_string(std::rand() % 100);
+    int nd = 1 + std::rand() % 5;
+    for (int i = 0; i < nd; i++) s.pazymiai.push_back(1 + std::rand() % 10);
         s.pazymiai.push_back(1 + std::rand() % 10);
 
     s.egzaminas   = 1 + std::rand() % 10;
