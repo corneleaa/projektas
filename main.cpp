@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
+#include <fstream>
+#include <sstream>
 
 
 using std::cout;
@@ -21,6 +23,8 @@ using std::setprecision;
 using std::getline;
 using std::numeric_limits;
 using std::streamsize;
+using std::ifstream;
+using std::istringstream;
 
 struct Studentas {
     string vardas;
